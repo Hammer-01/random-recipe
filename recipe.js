@@ -32,7 +32,7 @@ let ingredientTitle = document.createElement('h2');
 ingredientTitle.appendChild(document.createTextNode("Ingredients"));
 document.body.appendChild(ingredientTitle);
 
-let ingredientList = document.createElement('ol');
+let ingredientList = document.createElement('ul');
 for (let ingredient of recipe.extendedIngredients) {
     let item = document.createElement('li');
     item.appendChild(document.createTextNode(ingredient.original));
@@ -48,3 +48,9 @@ document.body.appendChild(methodTitle);
 document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
 
 //})();
+
+function appendElement(type, content) { // appends an element to document.body
+    let element = document.createElement(type);
+    element.appendChild(typeof content === 'string' ? document.createTextNode(content) : content);
+    document.body.appendChild(element);
+}
