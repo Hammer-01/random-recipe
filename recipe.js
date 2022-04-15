@@ -27,4 +27,12 @@ let recipeImg = document.createElement('img');
 recipeImg.src = recipe.image;
 document.body.appendChild(recipeImg);
 
+// ingredients
+
+
+// method
+let recipeMethod = document.createElement('ol');
+recipeMethod.outerHTML = recipe.instructions;
+document.body.appendChild(recipeMethod);
+
 //})();
