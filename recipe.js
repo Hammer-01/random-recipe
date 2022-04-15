@@ -30,7 +30,7 @@ document.body.appendChild(recipeImg);
 // ingredients
 
 
-// method
-document.body.innerHTML += recipe.instructions; // already an ordered list
+// method (already an ordered list)
+document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
 
 //})();
