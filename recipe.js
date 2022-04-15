@@ -11,8 +11,10 @@ let apiKey = "0cc27a86f9144fd7b1c23d9248b9db83";
 let recipe = recipes[Math.floor(Math.random()*recipes.length)].recipes[0];
 
 // recipe title
-//[page title]
-//[title on document]
+document.title = recipe.title;
+let recipeTitle = document.createElement('h1');
+recipeTitle.appendChild(document.createTextNode(recipe.title));
+document.body.appendChild(recipeTitle);
 
 // recipe description
 let recipeDesc = document.createElement('p');
