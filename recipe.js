@@ -38,6 +38,7 @@ for (let ingredient of recipe.extendedIngredients) {
     item.appendChild(document.createTextNode(ingredient.original));
     ingredientList.appendChild(item);
 }
+document.body.appendChild(ingredientList);
 
 // method (already an ordered list). 
 let methodTitle = document.createElement('h2');
