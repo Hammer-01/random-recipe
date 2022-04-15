@@ -16,6 +16,7 @@ let recipe = recipes[Math.floor(Math.random()*recipes.length)].recipes[0];
 
 // recipe description
 let recipeDesc = document.createElement('p');
+// TODO: change links in summary (they are all for suggested items) to links pointing to equvalent page on this site or at least a link that isn't broken. 
 recipeDesc.innerHTML = recipe.summary;
 document.body.appendChild(recipeDesc);
 
