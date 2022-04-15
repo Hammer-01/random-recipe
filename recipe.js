@@ -31,8 +31,6 @@ document.body.appendChild(recipeImg);
 
 
 // method
-let recipeMethod = document.createElement('ol');
-recipeMethod.outerHTML = recipe.instructions;
-document.body.appendChild(recipeMethod);
+document.body.innerHTML += recipe.instructions; // already an ordered list
 
 //})();
