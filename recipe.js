@@ -28,6 +28,10 @@ recipeImg.src = recipe.image;
 document.body.appendChild(recipeImg);
 
 // ingredients
+let ingredientTitle = document.createElement('h2');
+ingredientTitle.appendChild(document.createTextNode("Ingredients"));
+document.body.appendChild(ingredientTitle);
+
 let ingredientList = document.createElement('ol');
 for (let ingredient of recipe.extendedIngredients) {
     let item = document.createElement('li');
@@ -35,7 +39,11 @@ for (let ingredient of recipe.extendedIngredients) {
     ingredientList.appendChild(item);
 }
 
-// method (already an ordered list). convert fahrenheit to celsius
+// method (already an ordered list). 
+let methodTitle = document.createElement('h2');
+methodTitle.appendChild(document.createTextNode("Method"));
+document.body.appendChild(methodTitle);
+// convert fahrenheit to celsius
 document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
 
 //})();
