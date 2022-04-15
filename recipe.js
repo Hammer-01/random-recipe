@@ -54,7 +54,7 @@ document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, 
 //})();
 
 function appendElement(type, content, parent) {
-    parent ?? parent = document.body;
+    parent ??= document.body;
     let element = document.createElement(type);
     element.appendChild(typeof content === 'string' ? document.createTextNode(content) : content);
     parent.appendChild(element);
