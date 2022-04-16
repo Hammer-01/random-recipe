@@ -30,7 +30,7 @@ document.body.appendChild(recipeDesc);
 appendElement('h2', 'Ingredients');
 let ingredientList = document.createElement('ul');
 ingredientList.style = "padding:1.5em"; // replace automatic indent
-for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, `list-style-type:none;padding-left:3em;background-size:contain;background-repeat:no-repeat;background-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`, ingredientList);
+for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, ingredientList, `list-style-type:none;padding-left:3em;background-size:contain;background-repeat:no-repeat;background-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`);
 document.body.appendChild(ingredientList);
 
 // method (already an ordered list). 
@@ -38,9 +38,14 @@ appendElement('h2', 'Method');
 // convert fahrenheit to celsius
 document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
 
+let sourcePara = appendElement('p', 'Source: ');
+appendElement('a', recipe.creditsText, sourcePara).href = recipe.sourceUrl;
+sourcePara.appendChild(document.createTextNode(' via '));
+appendElement('a', 'Spoonacular.com', sourcePara).href = 'https://spoonacular.com';
+
 //})();
 
-function appendElement(type, content, style, parent) {
+function appendElement(type, content, parent, style) {
     parent ??= document.body;
     let element = document.createElement(type);
     if (style) element.style = style;
