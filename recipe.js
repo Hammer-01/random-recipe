@@ -38,7 +38,7 @@ appendElement('h2', 'Method');
 // convert fahrenheit to celsius
 document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
 
-let sourcePara = appendElement('p', 'Source: ');
+let sourcePara = appendElement('p', 'Source: ', null, 'margin-top:50px');
 appendElement('a', recipe.creditsText, sourcePara).href = recipe.sourceUrl;
 sourcePara.appendChild(document.createTextNode(' via '));
 appendElement('a', 'Spoonacular.com', sourcePara).href = 'https://spoonacular.com';
