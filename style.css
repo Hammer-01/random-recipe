@@ -2,19 +2,25 @@
   box-sizing: border-box;
 }
 
+body {
+  max-width: 970px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   text-align: center;
   font-family: "Segoe UI", Verdana;
   margin: inherit;
-  margin-left: 6rem;
-  margin-right: 6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 ol, ul {
   font-family: "Segoe UI", Verdana;
   margin: inherit;
-  margin-left: 10rem;
-  margin-right: 10rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 img {
