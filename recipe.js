@@ -29,7 +29,7 @@ document.body.appendChild(recipeDesc);
 // ingredients
 appendElement('h2', 'Ingredients');
 let ingredientList = document.createElement('ul');
-for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, `item-style-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`, ingredientList);
+for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, `list-style-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`, ingredientList);
 document.body.appendChild(ingredientList);
 
 // method (already an ordered list). 
