@@ -27,6 +27,7 @@ recipeDesc.innerHTML = recipe.summary;
 document.body.appendChild(recipeDesc);
 
 // ingredients
+// TODO: Change to a table
 appendElement('h2', 'Ingredients');
 let ingredientList = document.createElement('ul');
 ingredientList.style = "padding:1.5em"; // replace automatic indent
