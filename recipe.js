@@ -29,7 +29,7 @@ document.body.appendChild(recipeDesc);
 // ingredients
 appendElement('h2', 'Ingredients');
 let ingredientList = document.createElement('ul');
-for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, ingredientList);
+for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, `item-style-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`, ingredientList);
 document.body.appendChild(ingredientList);
 
 // method (already an ordered list). 
@@ -39,9 +39,10 @@ document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, 
 
 //})();
 
-function appendElement(type, content, parent) {
+function appendElement(type, content, style, parent) {
     parent ??= document.body;
     let element = document.createElement(type);
+    if (style) element.style = style;
     element.appendChild(typeof content === 'string' ? document.createTextNode(content) : content);
     parent.appendChild(element);
     return element;
