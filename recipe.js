@@ -15,16 +15,16 @@ document.title = recipe.title;
 
 appendElement('h1', recipe.title);
 
-// recipe description - already in html format
-let recipeDesc = document.createElement('p');
-// TODO: change links in summary (they are all for suggested items) to links pointing to equvalent page on this site or at least a link that isn't broken. 
-recipeDesc.innerHTML = recipe.summary;
-document.body.appendChild(recipeDesc);
-
 // display image of recipe
 let recipeImg = document.createElement('img');
 recipeImg.src = recipe.image;
 document.body.appendChild(recipeImg);
+
+// recipe description - already in html format
+let recipeDesc = document.createElement('p');
+// TODO: change links in summary (they are all for suggested items) to links pointing to equivalent page on this site or at least a link that isn't broken. 
+recipeDesc.innerHTML = recipe.summary;
+document.body.appendChild(recipeDesc);
 
 // ingredients
 appendElement('h2', 'Ingredients');
