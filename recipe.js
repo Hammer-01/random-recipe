@@ -12,9 +12,7 @@ let recipe = recipes[Math.floor(Math.random()*recipes.length)].recipes[0];
 
 // recipe title
 document.title = recipe.title;
-//let recipeTitle = document.createElement('h1');
-//recipeTitle.appendChild(document.createTextNode(recipe.title));
-//document.body.appendChild(recipeTitle);
+
 appendElement('h1', recipe.title);
 
 // recipe description - already in html format
@@ -29,24 +27,12 @@ recipeImg.src = recipe.image;
 document.body.appendChild(recipeImg);
 
 // ingredients
-//let ingredientTitle = document.createElement('h2');
-//ingredientTitle.appendChild(document.createTextNode("Ingredients"));
-//document.body.appendChild(ingredientTitle);
 appendElement('h2', 'Ingredients');
-
 let ingredientList = document.createElement('ul');
-for (let ingredient of recipe.extendedIngredients) {
-    //let item = document.createElement('li');
-    //item.appendChild(document.createTextNode(ingredient.original));
-    //ingredientList.appendChild(item);
-    appendElement('li', ingredient.original, ingredientList);
-}
+for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, ingredientList);
 document.body.appendChild(ingredientList);
 
 // method (already an ordered list). 
-//let methodTitle = document.createElement('h2');
-//methodTitle.appendChild(document.createTextNode("Method"));
-//document.body.appendChild(methodTitle);
 appendElement('h2', 'Method');
 // convert fahrenheit to celsius
 document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
@@ -58,4 +44,5 @@ function appendElement(type, content, parent) {
     let element = document.createElement(type);
     element.appendChild(typeof content === 'string' ? document.createTextNode(content) : content);
     parent.appendChild(element);
+    return element;
 }
