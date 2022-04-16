@@ -29,7 +29,8 @@ document.body.appendChild(recipeDesc);
 // ingredients
 appendElement('h2', 'Ingredients');
 let ingredientList = document.createElement('ul');
-for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, `list-style-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`, ingredientList);
+ingredientList.style = "padding:1.5em"; // replace automatic indent
+for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, `list-style-type:none;padding-left:1.5em;background-size:1em;background-repeat:no-repeat;background-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`, ingredientList);
 document.body.appendChild(ingredientList);
 
 // method (already an ordered list). 
