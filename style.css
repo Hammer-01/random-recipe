@@ -1,11 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   text-align: center;
   font-family: "Segoe UI", Verdana;
   margin: inherit;
+  margin-left: 6rem;
+  margin-right: 6rem;
 }
 
 ol, ul {
-  margin-left: 1em;
+  margin: inherit;
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
 
 img {
