@@ -54,7 +54,7 @@ async function createPage() { // allow use of await
     // TODO: 
     //    Use recipe.analyzedInstructions[0].steps[i].equipment[j].temperature to correctly convert temperature to Celsius if required
     //    Parse recipe.instructions (check for <ol> or \n configuration)
-    //    Check if recipe.instructions has a greater of steps than recipe.analyzedInstructions[0].steps (if they are the same, use the analyzedInstructions)
+    //    Check if recipe.instructions has a greater or equal number of steps than recipe.analyzedInstructions[0].steps
     //    Use recipe.instructions if true, or recipe.analyzedInstructions[0].steps if false
     appendElement('h2', 'Method');
     // convert fahrenheit to celsius
