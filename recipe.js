@@ -36,13 +36,18 @@ let createPage = async function() { // allow use of await
     for (let ingredient of recipe.extendedIngredients) appendElement('li', ingredient.original, ingredientList, `list-style-type:none;padding-left:3em;background-size:contain;background-repeat:no-repeat;background-image:url('https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}')`);
     document.body.appendChild(ingredientList);
 
-    // method (already an ordered list). 
+    // method (already an ordered list) (not). 
+    // TODO: 
+    //    Parse recipe.instructions (check for <ol> or \n configuration)
+    //    Check if recipe.instructions has a greater or equal number of steps than recipe.analyzedInstructions[0].steps
+    //    Use recipe.instructions if true, or recipe.analyzedInstructions[0].steps if false
     appendElement('h2', 'Method');
     // convert fahrenheit to celsius
     document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
 
     let sourcePara = appendElement('p', 'Source: ', null, 'margin-top:50px');
-    appendElement('a', recipe.creditsText, sourcePara).href = recipe.sourceUrl;
+    // Display the name of the source. If no name is present, use the bare domain of the sourceUrl (i.e. www.example.com becomes example.com)
+    appendElement('a', recipe.creditsText || recipe.sourceName || (new URL(recipe.sourceUrl)).hostname.replace('www.',(m,o)=>o==0?'':'www.'), sourcePara).href = recipe.sourceUrl;
     sourcePara.appendChild(document.createTextNode(' via '));
     appendElement('a', 'Spoonacular.com', sourcePara).href = recipe.spoonacularSourceUrl;
     } finally {
