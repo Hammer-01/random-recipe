@@ -39,7 +39,7 @@ async function createPage() { // allow use of await
     // recipe description - already in html format
     let recipeDesc = document.createElement('p');
     // TODO: change links in summary to links pointing to equivalent page on this site using the id
-    summarySentences = recipe.summary.trim.split(/(\.\s|!\s|\?\s)/); // split based on sentence boundaries, keeping the separators
+    summarySentences = recipe.summary.trim().split(/(\.\s|!\s|\?\s)/); // split based on sentence boundaries, keeping the separators
     if (recipe.summary.indexOf('spoonacular score') !== -1) {
         // Starting at the end of the array, delete all values up to and including the sentence with 'spoonacular score' in it
         while (summarySentences.pop().indexOf('spoonacular score') === -1);
