@@ -40,9 +40,9 @@ async function createPage() { // allow use of await
     let recipeDesc = document.createElement('p');
     // TODO: change links in summary to links pointing to equivalent page on this site using the id
     summarySentences = recipe.summary.trim().split(/(\.\s|!\s|\?\s)/); // split based on sentence boundaries, keeping the separators
-    if (recipe.summary.indexOf('spoonacular score') !== -1) {
-        // Starting at the end of the array, delete all values up to and including the sentence with 'spoonacular score' in it
-        while (summarySentences.pop().indexOf('spoonacular score') === -1);
+    if (recipe.summary.replace(/<\/?b>/gi,'').indexOf('spoonacular score') !== -1) {
+        // Starting at the end of the array, delete all values up to and including the sentence with 'spoonacular score' in it. Strip bold tags to fix cross-boundary search
+        while (summarySentences.pop().replace(/<\/?b>/gi,'').indexOf('spoonacular score') === -1);
     } else summarySentences.pop(); // remove the last sentence if 'spoonacular score' isn't present
     recipeDesc.innerHTML = summarySentences.join('');
     document.body.appendChild(recipeDesc);
