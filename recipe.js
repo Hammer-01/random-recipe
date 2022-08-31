@@ -31,8 +31,9 @@ async function createPage() { // allow use of await
 
     appendElement('h1', recipe.title);
 
-    // display image of recipe
+    // display image of recipe - https://spoonacular.com/food-api/docs#Show-Images
     let recipeImg = document.createElement('img');
+	[recipeImg.width, recipeImg.height] = recipe.image.split(/-|\./).at(-2).split('x'); // preset width and height to avoid content shift
     recipeImg.src = recipe.image;
     document.body.appendChild(recipeImg);
 
