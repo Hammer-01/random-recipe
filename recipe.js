@@ -23,9 +23,12 @@ async function createPage() { // allow use of await
     // use this for development
     //let recipe = recipes[Math.floor(Math.random()*recipes.length)].recipes[0];
 
+    let recipeId = window.location.search.match(/(?:\?|&)id=(\d+)/);
+    let requestUrl = recipeId ? `${recipeId[1]}/information` : 'random';
+    
     // use fetch to get random recipe when development is finished. currently only one recipe is being requested per page load. 
-    /*let */recipe = (await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`).then(r => r.json())).recipes[0];
-
+    /*let*/ recipe = (await fetch(`https://api.spoonacular.com/recipes/${requestUrl}?apiKey=${apiKey}`).then(r => r.json())).recipes[0];
+    
     // recipe title
     document.title = recipe.title;
 
