@@ -44,6 +44,8 @@ async function createPage() { // allow use of await
     // info bar with servings, cook time, share button etc.
     let infoBar = document.createElement('div');
     infoBar.style.display = 'flex';
+    infoBar.style.justifyContent = 'center';
+    infoBar.style.margin = 'inherit';
     // infoBar.style.backgroundColor = '#ddd';
     appendElement('p', `Serves ${recipe.servings}`, infoBar); // maybe add styles later
     appendElement('p', `Ready in ${recipe.readyInMinutes} minutes`, infoBar);
