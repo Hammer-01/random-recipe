@@ -63,8 +63,8 @@ async function createPage() { // allow use of await
     //    Check if recipe.instructions has a greater or equal number of steps than recipe.analyzedInstructions[0].steps
     //    Use recipe.instructions if true, or recipe.analyzedInstructions[0].steps if false
     appendElement('h2', 'Method');
-    // convert fahrenheit to celsius
-    document.body.innerHTML += recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`);
+    // convert fahrenheit to celsius, surround with <p> tags and append
+    document.body.innerHTML += '<p>' + recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`).replace(/^<p>(.*)<\/p>$/, '$1') + '</p>';
 
     let sourcePara = appendElement('p', 'Source: ', null, 'margin-top:50px');
     // Display the name of the source. If no name is present, use the bare domain of the sourceUrl (i.e. www.example.com becomes example.com)
