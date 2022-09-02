@@ -50,6 +50,7 @@ async function createPage() { // allow use of await
     let saveButton = appendElement('button', 'Save and Share', infoBar); // definitely add styles later
     // TODO: Make a nice modal or something, copy to clipboard, maybe have little 'copied to clipboard' message when button pressed
     saveButton.onclick = () => alert(`Copy link to this recipe:\n${window.location.origin + window.location.pathname}?id=${recipe.id}`);
+    document.body.appendChild(infoBar);
 
     // recipe description - already in html format
     let recipeDesc = document.createElement('p');
