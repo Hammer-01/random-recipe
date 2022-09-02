@@ -40,6 +40,16 @@ async function createPage() { // allow use of await
     [recipeImg.width, recipeImg.height] = [556, 370]; //recipe.image.split(/-|\./).at(-2).split('x'); // preset width and height to avoid content shift
     recipeImg.src = recipe.image || `https://spoonacular.com/recipeImages/${recipe.id}-556x370.${recipe.imageType || 'jpg'}`; // if image url is not available (e.g. id=664025), try and construct one
     document.body.appendChild(recipeImg);
+    
+    // info bar with servings, cook time, share button etc.
+    let infoBar = document.createElement('div');
+    infoBar.style.display = 'flex';
+    // infoBar.style.backgroundColor = '#ddd';
+    appendElement('p', `Serves ${recipe.servings}`, infoBar); // maybe add styles later
+    appendElement('p', `Ready in ${recipe.readyInMinutes} minutes`, infoBar);
+    let saveButton = appendElement('button', 'Save and Share', infoBar); // definitely add styles later
+    // TODO: Make a nice modal or something, copy to clipboard, maybe have little 'copied to clipboard' message when button pressed
+    saveButton.onclick = () => alert(`Copy link to this recipe:\n${window.location.origin + window.location.pathname}?id=${recipe.id}`);
 
     // recipe description - already in html format
     let recipeDesc = document.createElement('p');
@@ -65,7 +75,7 @@ async function createPage() { // allow use of await
     //    Use recipe.analyzedInstructions[0].steps[i].equipment[j].temperature to correctly convert temperature to Celsius if required
     //    Parse recipe.instructions (check for <ol> or \n configuration)
     //    Check if recipe.instructions has a greater or equal number of steps than recipe.analyzedInstructions[0].steps
-    //    Use recipe.instructions if true, or recipe.analyzedInstructions[0].steps if false
+    //    Use recipe.instructions if true, or recipe.analyzedInstructions[0].steps if false (also check id=664025)
     appendElement('h2', 'Method');
     // convert fahrenheit to celsius, surround with <p> tags and append
     document.body.innerHTML += '<p>' + recipe.instructions.replace(/(\d+) degrees F/gi, (m, t) => `${~~((t-32)*5/9)} degrees C`).replace(/^<p>(.*)<\/p>$/, '$1') + '</p>';
