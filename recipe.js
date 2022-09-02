@@ -37,8 +37,8 @@ async function createPage() { // allow use of await
 
     // display image of recipe - https://spoonacular.com/food-api/docs#Show-Images
     let recipeImg = document.createElement('img');
-    [recipeImg.width, recipeImg.height] = recipe.image.split(/-|\./).at(-2).split('x'); // preset width and height to avoid content shift
-    recipeImg.src = recipe.image;
+    [recipeImg.width, recipeImg.height] = [556, 370]; //recipe.image.split(/-|\./).at(-2).split('x'); // preset width and height to avoid content shift
+    recipeImg.src = recipe.image || `https://spoonacular.com/recipeImages/${recipe.id}-556x370.${recipe.imageType || 'jpg'}`; // if image url is not available (e.g. id=664025), try and construct one
     document.body.appendChild(recipeImg);
 
     // recipe description - already in html format
